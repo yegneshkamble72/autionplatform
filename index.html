@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AuctionHub | Smart Auction Platform</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+
+/* LOADER */
+
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#020617;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+flex-direction:column;
+}
+
+.ring{
+width:70px;
+height:70px;
+border:6px solid transparent;
+border-top:6px solid #3b82f6;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* HERO */
+
+.hero{
+background-image:url("https://i.ibb.co/Y4fVv5tg/Chat-GPT-Image-Mar-14-2026-09-50-57-AM.png");
+background-size:cover;
+background-position:center;
+min-height:100vh;
+}
+
+.overlay{
+background:linear-gradient(90deg,#020617ee 0%, #020617cc 40%, transparent 80%);
+min-height:100vh;
+}
+
+/* BUTTON */
+
+.startBtn{
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+box-shadow:0 0 20px #2563eb;
+transition:.3s;
+}
+
+.startBtn:hover{
+transform:scale(1.05);
+}
+
+/* POPUP ANIMATION */
+
+@keyframes fade{
+from{
+transform:scale(.8);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+</style>
+
+</head>
+
+<body class="text-white bg-black font-sans">
+
+<!-- LOADER -->
+
+<div id="loader">
+<div class="ring"></div>
+<p class="mt-4 text-xl font-bold text-blue-400">
+AuctionHub
+</p>
+</div>
+
+<!-- NAVBAR -->
+
+<nav class="absolute top-0 left-0 w-full z-50">
+
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
+
+<!-- LOGO -->
+
+<div class="flex items-center gap-3">
+
+<div class="w-10 h-10 bg-white flex items-center justify-center rounded-lg overflow-hidden">
+<img src="https://i.ibb.co/chxBPK0f/Chat-GPT-Image-Mar-14-2026-09-57-00-AM.png" class="w-8 h-8 object-contain">
+</div>
+
+<div>
+<h1 class="text-lg md:text-xl font-bold">AuctionHub</h1>
+<p class="text-xs text-gray-400">Secure • Fast • Reliable</p>
+</div>
+
+</div>
+
+<!-- MENU -->
+
+<div class="hidden md:flex gap-8 text-sm">
+
+<a href="#" onclick="openPopup()" class="hover:text-blue-400">Home</a>
+<a href="#" onclick="openPopup()" class="hover:text-blue-400">About</a>
+<a href="#" onclick="openPopup()" class="hover:text-blue-400">Contact</a>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="hidden md:block">
+<button onclick="openPopup()" class="bg-blue-500 px-5 py-2 rounded-lg hover:bg-blue-600">
+Dashboard
+</button>
+</div>
+
+<!-- MOBILE MENU BUTTON -->
+
+<button class="md:hidden text-2xl" onclick="toggleMenu()">
+☰
+</button>
+
+</div>
+
+<!-- MOBILE MENU -->
+
+<div id="mobileMenu" class="hidden flex-col text-center bg-black border-t border-gray-800 md:hidden">
+
+<a href="#" onclick="openPopup()" class="py-3 border-b border-gray-800">Home</a>
+<a href="#" onclick="openPopup()" class="py-3 border-b border-gray-800">About</a>
+<a href="#" onclick="openPopup()" class="py-3 border-b border-gray-800">Contact</a>
+
+<button onclick="openPopup()" class="m-4 bg-blue-500 py-2 rounded-lg">
+Dashboard
+</button>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="overlay flex items-center">
+
+<div class="max-w-7xl mx-auto px-6 py-32">
+
+<div class="max-w-xl">
+
+<p class="tracking-widest text-gray-300 text-sm md:text-base">
+SMART ONLINE
+</p>
+
+<h1 class="text-4xl md:text-6xl font-bold mt-3">
+
+<span class="text-blue-500">
+AUCTION
+</span>
+
+PLATFORM
+
+</h1>
+
+<p class="mt-6 text-lg md:text-2xl tracking-widest">
+
+BID. <span class="text-blue-400">WIN.</span> OWN.
+
+</p>
+
+<!-- FEATURES -->
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 text-center text-sm">
+
+<div>
+<div class="text-blue-400 text-2xl">📡</div>
+Live Bidding
+</div>
+
+<div>
+<div class="text-blue-400 text-2xl">📊</div>
+Real-Time Analytics
+</div>
+
+<div>
+<div class="text-blue-400 text-2xl">🛡️</div>
+100% Secure
+</div>
+
+<div>
+<div class="text-blue-400 text-2xl">💳</div>
+Instant Payments
+</div>
+
+</div>
+
+<button onclick="openPopup()" class="startBtn mt-10 px-8 py-3 md:px-10 md:py-4 rounded-full text-lg">
+Start Bidding Now →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- POPUP -->
+
+<div id="popup" class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-sm z-50">
+
+<div class="bg-gray-900 border border-blue-500 p-10 rounded-2xl text-center shadow-xl animate-[fade_.4s]">
+
+<h2 class="text-3xl font-bold text-blue-400 mb-4">
+🚧 Page Coming Soon
+</h2>
+
+<p class="text-gray-400 mb-6">
+This feature is currently under development.
+</p>
+
+<button onclick="closePopup()" class="bg-blue-500 px-6 py-2 rounded-lg hover:bg-blue-600">
+Close
+</button>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="border-t border-gray-800 py-6 text-center text-gray-400">
+
+© 2026 AuctionHub | Smart Auction Platform
+
+</footer>
+
+<script>
+
+/* LOADER */
+
+window.addEventListener("load",function(){
+document.getElementById("loader").style.display="none";
+})
+
+/* POPUP */
+
+function openPopup(){
+document.getElementById("popup").classList.remove("hidden")
+document.getElementById("popup").classList.add("flex")
+}
+
+function closePopup(){
+document.getElementById("popup").classList.add("hidden")
+}
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+let menu=document.getElementById("mobileMenu")
+menu.classList.toggle("hidden")
+}
+
+</script>
+
+</body>
+</html>
